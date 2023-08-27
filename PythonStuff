@@ -1,0 +1,174 @@
+import random 
+import string
+
+
+# instrut usr on what this is...
+def runGame1():
+    getUsrInput = 1
+
+    randomNum = 0
+
+    #random function is gen from the inside.....
+
+    while getUsrInput != randomNum:
+        getUsrInput = int(input("Enter your number: "))
+
+        randomNum = random.randint(1,5)
+
+        print("Your Guess: " + str(getUsrInput) + " Randoms: " + str(randomNum))
+
+
+#runGame1()
+
+def runGame2():
+    getUsrInput = 1
+    randomNum = random.randint(1,10)
+    #random function is gen from the inside.....
+
+    while getUsrInput != randomNum:
+        getUsrInput = int(input("Enter your number: "))
+        # its testing the output
+        if getUsrInput > randomNum:
+            print("Too big ")
+        if getUsrInput < randomNum:
+            print("Too Low ")
+        
+
+  
+def runGame3():
+   
+    getUsrInput = int(input("Guess a number between 1 - 10 and the system will try to guess it. "))
+
+    print("The system will now try to guess your number until, it gets it correct.")
+    
+    #random function is gen from the inside.....
+    randomNum = 0
+    while getUsrInput != randomNum:
+        
+        # its testing the output
+        randomNum = random.randint(1,10)
+
+        print("Your Guess is : " + str(getUsrInput) + " Sys Guess is : " + str(randomNum) )
+
+
+def runGame4():
+    # asking for usr input without input.
+    # system will guess a number and usr will tell system if number is correct.
+    print("Keep guesses to 1 - 10 take test short and easy...")
+    getUsrInput = ""
+    i=0
+    while getUsrInput.lower() != "c":
+        
+        randomNum = random.randint(1,10)
+
+        print("Is this your number : " +  str(randomNum))
+        
+        getUsrInput = str(input("Enter (H) for high, (L) for Low, (C) for correct: ")) # how would the system know if its too low or too high ???
+        i = i + 1
+
+        if getUsrInput.upper() == "C":
+            print("Awsome it took me " + str(i) )
+
+        elif getUsrInput.upper() == "H":
+            print("Dang to High.... ")
+
+        elif getUsrInput.upper() == "L":
+            print("Dang too low ")
+        else:
+            print("Enter the correct Key: ")
+
+
+def runGame5():
+    #create a list for RPS
+    # throw this into the while loop.
+    gameHand = ["R","S","P"]
+   
+
+    print("Welcome to a simple game of Paper,Scissor,Rock:  ")
+    while True:
+        usrInput = input("Enter R for Rock, P for Paper, S for Scissor ")
+
+        randomNum = random.choice(gameHand)
+        # how do you compare Letters ?
+        print("User choose: " + usrInput + " System choose: "  +  randomNum)
+
+        if usrInput == randomNum: # will not work....
+            print("its a Tie ")
+        elif usrInput == "S" and randomNum == "P":
+            print("Usr Won scissors beats rock")
+            print("User choose: " + usrInput + "System choose: "  +  randomNum)
+        elif usrInput == "P" and randomNum == "R":
+            print("you won ?")
+        elif usrInput =="P" and randomNum == "S":
+            print("System won")
+        elif usrInput == "S" and randomNum == "R":
+            print("System won with Rock")
+        
+
+
+def runGame6():
+    #Hangman Game...
+    # user will have a limited amount of guess, if limit is reached game over, if user guessed before limit user wins.
+    # problems to figure out.
+    # when user input a guess determine how to min a number from a limit example from 5 to 4, 3 etc.
+    # when user guess rifht number how to keep it from disappearing... if thats the right word.
+
+    # WORD to GUESS > superman
+
+    print("Welcome to the Hangman Game, you will be given a 10 tried to guess a word")
+
+    finalInput = ['s','u','p','e','r','m','a','n']
+    finalCorrect = []
+    wrongCounter = 0
+    rightCounter = 0
+    usrInput = ""
+    # while 8 > rightcounter meaning, in the index is 8, while counter 0 counter increment everytime they get it right.
+
+    while len(finalInput) > rightCounter  and wrongCounter < 10:
+        print(f"Here is the blank word if correct this get filled in {finalCorrect}")
+        usrInput = input("Enter a Character for each one.")
+    #one task when user enter the same word make sure its not entered again.
+        if usrInput in finalInput:
+            print("Found a match")           
+            
+            # how i can think of is a list again
+            if not usrInput in finalCorrect:
+                rightCounter += 1
+                if usrInput == "s":
+                    print("This might show up ")
+                    finalCorrect.insert(0,usrInput)
+                if usrInput == "u":
+                    finalCorrect.insert(1, usrInput)
+                if usrInput == "p":
+                    finalCorrect.insert(2,usrInput)
+                if usrInput == "e":
+                    finalCorrect.insert(3,usrInput)
+                if usrInput == "r":
+                    finalCorrect.insert(4, usrInput)
+                if usrInput == "m":
+                    finalCorrect.insert(5, usrInput)
+                if usrInput == "a":
+                    finalCorrect.insert(6,usrInput)
+                if usrInput == "n":
+                    finalCorrect.insert(7,usrInput)
+            else:
+                print("Try again, that word is already used")
+
+            
+        else:
+            
+            wrongCounter += 1
+            print(f"Dang, incorrect  {wrongCounter}")
+
+
+
+    
+
+
+
+
+    
+
+
+runGame6()
+
