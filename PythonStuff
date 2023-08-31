@@ -159,16 +159,75 @@ def runGame6():
             
             wrongCounter += 1
             print(f"Dang, incorrect  {wrongCounter}")
-
-
-
-    
-
-
-
-
     
 
 
 runGame6()
+
+
+def runGame1():
+    #Create a HangMan Game::::
+    finalList = ['a','n','t']
+    wrongCount = 0
+    rightCount = 0
+    emptyList = ['_','_','_']
+    guessInput = []
+    counter = int(len(finalList))
+
+    # add two conditions:
+    # Compare index of len of an array with right counter when right is greate than index array list
+    # easier: compare wrong count with the limit you want to set it to.
+
+    #Draw it out>
+    # this compares the index number of a list a with right count of zero that get increment
+    # the wrong compares the limi of tries usr has
+    while True:
+        usrInput = input("Enter a letter to guess, system will tell you it is wrong or not: ")
+        guessInput.append(usrInput)
+        print(f"Here are the letters you have tried {guessInput}")
+        
+        
+        # this goes throught final list and see if it can find the word
+        if usrInput.lower() in finalList:
+            # after they get the right one we need to see if it already exists
+            # create a variable for guesses ?
+            # need to make a empty list, how do you compare an usrInput list 
+            # we need it to compare the list with finalList so it know where it goes... but how ?
+            # maybe len can help me here again....
+            # find it using the len list 
+            # step one compare chracter and get right index .
+            # found the index location now we need to see the word already exist
+            # it works but missing one thing, if they repeat a ?????
+            # it works now we need to save a list of guess words and output them to the user.
+            # problem here is that it does not finish the word
+            # probably needs a rewrite this one.
+            # we may need to add condtions again
+            
+            indexLocation = finalList.index(usrInput)
+                     
+            if usrInput not in emptyList:
+                emptyList.pop(indexLocation)
+                emptyList.insert(indexLocation, usrInput)
+                rightCount += 1
+                print(f"Here is the HangMan word {emptyList}")
+                if counter == rightCount:
+                    print("Congradulations you have won the hangman Game")
+                    break
+               
+            else:
+                print("Word already is already in use....")
+            
+        else:
+            print("Wrong letter please try again")
+            print(f"Here is the HangMan word {emptyList}")
+            wrongCount += 1
+            if(wrongCount >= 10):
+                print("You lost oh well")
+                break
+   
+    
+        
+
+
+runGame1()
 
