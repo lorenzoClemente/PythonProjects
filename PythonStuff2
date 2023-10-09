@@ -1,0 +1,43 @@
+finalWord = "mirla"
+rightCounter = 0
+wrongCounter = 0
+limitCount = 10
+guesslist = []
+
+
+# get some condition, when user enter right word it inceases the counter and if wrong, wrong counter increases.
+while rightCounter < len(finalWord) and wrongCounter < limitCount:
+    displayString = ""  
+    # usr input a letter
+    usrInput = input("Enter a letter: ")
+    # this end when usrInputs
+    while usrInput in guesslist:
+        usrInput = input("Letter already exist try again: ")
+    # letter is added to guesslist
+    guesslist.append(usrInput)
+
+    # tell user that the input is correct
+
+    if usrInput in finalWord:
+        print("Your input " + usrInput + " is in Correct")
+        rightCounter+=1
+        print(rightCounter)
+        if rightCounter == len(finalWord):
+            print("Congradulationssss, You have Wonnnnn")
+    else:
+        print("Your input " + usrInput + " is in Incorrect")
+        wrongCounter+=1
+        if wrongCounter == limitCount:
+            print("Failedddd, Sorry ran out of tries")
+
+    for emptyValue in finalWord:
+        if emptyValue in guesslist:
+            
+            displayString = displayString + emptyValue
+        
+        else:
+            displayString = displayString + "_"
+            print(displayString)
+            
+
+
